@@ -117,3 +117,5 @@ entry on a computer against a package. `tools/arminator_read.py` and `tools/artu
 preset libraries (Arminator 2's banks via tests/vstdump.c under Wine, the CS-80 V's) into a corpus; `tools/gen_random.py`
 reduces the 910 sounds to the RANDOM page's model (a mean a category and twelve directions, firmware/gen/cs1_random.h);
 nothing of the libraries themselves is shipped.
+
+You can also try CS-1 in the browser, no flashing needed, in the free community [FM-1 Emulator](https://fm1-emulator.atst.tools/).

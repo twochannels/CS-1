@@ -433,7 +433,11 @@ void fm1_cstart(void)
     fm1_boot.p3_rst = (uint8_t)p3;
     if (boot_mode == BOOT_RECOVERY || recovery_key())
         recovery_main();                        /* OCT- at power-on: the USB rescue */
-    flash_ok = FL_FAR(fl_jedec_ram)() == 0x856014u;
+    /* Puya 0x856014 or newer UC25HQ80 0xB36014 — else RAM-only / no OTA */
+    {
+        uint32_t jedec = FL_FAR(fl_jedec_ram)();
+        flash_ok = (jedec == 0x856014u || jedec == 0xB36014u);
+    }
     ota_boot_cleanup();
     lcd_init();
     lcd_fill(0, 0, 240, 240, C_BLACK);
